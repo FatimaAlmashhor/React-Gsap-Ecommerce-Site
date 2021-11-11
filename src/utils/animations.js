@@ -39,15 +39,14 @@ export const menuFedeOut = (elem1, elem2) => {
         duration: 0.3,
         opacity: 0,
         ease: 'power4.in'
+    }).to([elem1, elem2], {
+        height: '0%',
+        duration: 0.8,
+        ease: "power4.out",
+        stagger: { // the time between the to element
+            amount: 0.2,
+        },
     })
-        .to([elem1, elem2], {
-            height: '0%',
-            duration: 0.8,
-            ease: "power4.out",
-            stagger: { // the time between the to element
-                amount: 0.2,
-            },
-        })
 
 }
 
@@ -76,4 +75,14 @@ export const imageFedeIn = (cover, image) => {
             delay: 1,
             ease: 'back'
         })
+}
+
+export const sideInImage = (element) => {
+    gsap.from(element, {
+        // opacity: 0,
+        height: 0,
+        duration: 1.4,
+        stagger: 0.4,
+        ease: 'power4.inOut'
+    });
 }

@@ -152,10 +152,64 @@
             background-color: $menu-color-bg;
             z-index: 20;
             .menu-list{
+                --list-width : ;
                 position: relative;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: row;
                 .menu-items{
-                    position: absolute;
+                    position: relative;
                     opacity: 0;
+                    list-style: none;
+                    margin:0px ;
+                    padding : 0px ;
+                    margin-top: 16vw;
+                    // transform: translateY(-50%);
+                    left: 10%;
+                    font-size: 64px;
+                    font-weight: bold;
+                    line-height: 130px;
+                    color : white;
+                    &_item{
+                        position: relative;
+                        cursor: pointer;
+                        z-index: 100;
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            width: 60%;
+                            height: 5px;
+                            bottom:0px;
+                            left : 0px;
+                            background: white;
+                            opacity: 0;
+                            transition: 0.2s ease-in;
+                        }
+                        &:hover::after{
+                            opacity: 1;
+                            left:80px;
+                        }
+                    }
+                }
+                .menu-images-center{
+                    position: relative;
+                    height: 100%;
+                    width: 50vw;
+                    background-color: powderblue;
+                    overflow: hidden;
+                    .image-warpper{
+                        position: absolute;
+                        width: 100%;
+                        height: 100vh;
+                        top: 0px;
+                        left: 0px;
+                        overflow: hidden;
+                        .image{
+                            // position: absolute;
+                            width: 100%;
+                        }                        
+                    }
                 }
             }
         }
