@@ -1,0 +1,163 @@
+@import './avariables.scss';
+
+@mixin headerText() {
+    max-width: 70vw;
+    object-fit: contain;
+    font-family: $main-font-family;
+    font-size: 12vmax;
+    font-weight: lighter;
+    // overflow: hidden;
+    z-index: 100;
+    
+}
+
+*{
+    padding : 0px ;
+    margin : 0px ;
+    box-sizing : border-box;
+}
+
+
+.App
+{
+    background-color: $main-color-bg;
+    width : 100%;
+    overflow-x : hidden !important;
+    min-height: 100vh;
+    
+
+    // navbar - component
+    .navbar{
+        position: fixed;
+        margin-top : 30px;
+        background-color: transparent ;
+        height : 50px;
+        width: 100%;
+        font-family: $main-font-family;
+        z-index: 9999;
+        .nav-content{
+            display: flex;
+            overflow: hidden;
+            flex-direction: row;
+            height: 100%;
+            padding : $nav-padding-desk  ;
+            align-items: center;
+            // mix-blend-mode: difference;
+            .logo {
+                font-size: 36px ;
+                // background: inherit;
+                // background-clip: text;
+                // color: transparent;
+                // filter: invert(1) grayscale(1) contrast(9)
+            }
+            .nav-middile-text{
+                margin : auto ;
+                flex : 2fr;
+            }
+            .nav-menu {
+                position: relative;
+                justify-self: flex-end;
+                margin-right: 0px ;
+                font-size: 18px;
+                font-weight: bold;
+                cursor: pointer;
+                &::after{
+                    content: '';
+                    position: absolute;
+                    width : 40px;
+                    height: 1px;
+                    background-color: rgb(27, 27, 27);
+                    border-radius: 50%;
+                    left:-7px;
+                    bottom:0px;
+                    opacity: 0 ;
+                }
+            }
+        }
+        
+    }
+
+
+    // header component
+    .header{
+        margin : 20vh 4%; // need to be responsive
+        height:80vh;
+        // background-color: lavenderblush;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas: 
+        'upperImage bigTitle bigTitle' 
+        'upperImage bigTitleLower .'
+        '. . lowerImages'
+        ;
+        .header-upper-image{
+            grid-area: upperImage;
+            width: 254px;
+            height: auto;
+            overflow: hidden;
+            img {
+                width: 100%;
+            }
+        }
+        .header-lower-image{
+            grid-area: lowerImage;
+            width: 347px;
+            height: auto;
+            margin-left: -199px;
+            margin-top: -27vmin;
+            img {
+                width: 100%;
+            }
+        }
+
+        .header-big-title__upper{
+            @include headerText();
+            grid-area:bigTitle ;
+            h1{
+                height: 100%;
+               display: inline
+            }
+        }
+        .header-big-title__lower{
+            @include headerText();
+            grid-area:bigTitleLower ;
+            margin-top: -45px;
+        }
+    }
+
+
+    // Menu 
+    .menu {
+        position: fixed;
+        top : 0px; 
+        left: 0px;
+        z-index: 200 ;
+        width: 100%;
+        height : 0px ;
+        overflow: hidden;
+        
+        &_front-cover{
+            position: inherit;
+            width: inherit;
+            height : 0px ;
+           background-color: grey;
+           z-index: 10;
+        }
+        &_back-cover{
+            position: inherit;
+            width: inherit;
+            height : 0px ;
+            background-color: $menu-color-bg;
+            z-index: 20;
+            .menu-list{
+                position: relative;
+                .menu-items{
+                    position: absolute;
+                    opacity: 0;
+                }
+            }
+        }
+    }
+}
