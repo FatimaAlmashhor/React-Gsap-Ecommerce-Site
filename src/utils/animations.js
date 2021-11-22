@@ -25,19 +25,27 @@ export const menuFedeIn = (elem1, elem2) => {
             amount: 0.2,
         },
     })
-        .to('.menu-items', {
-            duration: 0.5,
+        .to('.menu-items > *', {
+            duration: 0.3,
             opacity: 1,
-            ease: 'power4.in'
+            y: 20,
+            ease: 'power4.in',
+            stagger: { // the time between the to element
+                amount: 0.4,
+            },
         })
 
 }
 
 export const menuFedeOut = (elem1, elem2) => {
     const tl = gsap.timeline();
-    tl.to('.menu-items', {
+    tl.to('.menu-items > *', {
         duration: 0.3,
         opacity: 0,
+        y: -20,
+        stagger: { // the time between the to element
+            amount: 0.1,
+        },
         ease: 'power4.in'
     }).to([elem1, elem2], {
         height: '0%',
@@ -54,9 +62,12 @@ export const textIntro = (elem1, elem2) => {
     gsap.from([elem1, elem2], {
         yPercent: 70,
         opacity: 0,
-        stagger: 0.4,
-        duration: 1,
+        delay: .5,
+        duration: 2,
         ease: "power4.out",
+        stagger: { // the time between the to element
+            amount: 0.2,
+        },
     });
 };
 

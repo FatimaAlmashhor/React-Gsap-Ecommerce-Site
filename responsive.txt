@@ -1,0 +1,16 @@
+container {
+    max-width : 1280px // for xl screen 
+    grid-template-columns: repeat(2,minmax(0,1fr));
+}
+
+children {
+    margin-top: 2.5rem;
+}
+
+.max-w-full-screen {
+    max-width: calc(100vw- 20px);
+}
+@media (prefers-color-scheme: dark)
+text{
+    font-size : calc(35px + (130 - 35) * ((100vw - var(--minViewportSize) * 1px) / (var(--maxViewportSize) - var(--minViewportSize))))
+}
