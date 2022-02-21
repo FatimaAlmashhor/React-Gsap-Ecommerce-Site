@@ -13,7 +13,7 @@ function Menu({ menuState, menuClick }) {
     let frontCover = useRef(null);
     let images = useRef(null);
 
-    const [menuHover, setmenuHover] = useState(1)
+    const [menuHover, setmenuHover] = useState(homeImage)
 
     useEffect(() => {
         if (menuState.state === 'close') {
@@ -24,11 +24,16 @@ function Menu({ menuState, menuClick }) {
         }
     }, [menuState])
 
+    useEffect(() => {
+        sideInImage(images)
+        console.log('here the img ', menuHover);
+        console.log('animation');
+    }, [menuHover])
+
     const handleHoverMenu = (value) => {
         setmenuHover(value);
-        sideInImage(images)
-        console.log('animation');
     }
+
     return (
         <div className='menu'>
             <div
@@ -42,14 +47,14 @@ function Menu({ menuState, menuClick }) {
                 <div className='menu-list'>
                     <ul className='menu-items'>
                         <li
-                            onMouseEnter={() => handleHoverMenu(1)}
-                            className='menu-items_item active'>Home</li>
+                            onMouseEnter={() => handleHoverMenu(homeImage)}
+                            className='menu-items_item active'>Fatima ALmashhor</li>
                         <li
-                            onMouseEnter={() => handleHoverMenu(2)}
-                            className='menu-items_item '>About Us</li>
+                            onMouseEnter={() => handleHoverMenu(aboutImage)}
+                            className='menu-items_item '>Wafa</li>
                         <li
-                            onMouseEnter={() => handleHoverMenu(3)}
-                            className='menu-items_item '>Contanct Us</li>
+                            onMouseEnter={() => handleHoverMenu(contactImage)}
+                            className='menu-items_item '>Hannen</li>
                     </ul>
                     <div className='menu-images-center'>
                         <div
@@ -57,20 +62,11 @@ function Menu({ menuState, menuClick }) {
                             className='image-warpper' style={{
 
                             }}>
-                            {menuHover === 1 ?
-                                (<img
+                            <img
+                                className='image'
+                                src={menuHover} alt="-for-menu" />) :
 
-                                    className='image'
-                                    src={homeImage} alt="-for-menu" />) :
-                                menuHover === 2 ?
-                                    (<img
 
-                                        className='image'
-                                        src={aboutImage} alt="-for-menu" />) :
-                                    (<img
-
-                                        className='image'
-                                        src={contactImage} alt="-for-menu" />)}
                         </div>
                     </div>
                     <div className='menu-description'>
